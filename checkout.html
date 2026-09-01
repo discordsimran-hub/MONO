@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mono | Checkout</title>
+  <link href="https://fonts.cdnfonts.com/css/pierson" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=12">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo-link" aria-label="Go to homepage">
+      <img src="Mono.jpeg" alt="Mono Logo" class="nav-logo">
+    </a>
+    <div class="nav-container">
+      <h1 class="logo">MONO</h1>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cart.html" class="nav-cart-button">Cart <span class="cart-count-badge" id="nav-cart-count">0</span></a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+        <button class="mobile-close" aria-label="Close menu">✕</button>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="summer-collection.html">Summer Collection'26</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section checkout-page">
+    <div class="container">
+      <div class="checkout-shell">
+        <div class="checkout-summary">
+          <h2>Order Summary</h2>
+          <div id="checkout-summary-list"></div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span>₹<span id="checkout-total">0</span></span>
+          </div>
+        </div>
+        <div class="checkout-details">
+          <h2>Delivery Details</h2>
+          <form id="checkout-form">
+            <label>
+              Full Name
+              <input id="customer-name" name="name" type="text" placeholder="Your full name" required>
+            </label>
+
+            <label>
+              Mobile Number
+              <input id="customer-number" name="mobile" type="tel" placeholder="Your mobile number" required>
+            </label>
+
+            <label>
+              Address
+              <textarea id="customer-address" name="address" placeholder="Your delivery address" rows="4" required></textarea>
+            </label>
+
+            <button class="submit-btn" type="submit">Place Order & Open WhatsApp</button>
+          </form>
+          <p id="form-message"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p> All Rights Reserved.
+          Brand & Products belong to Mono Fine Fragrances.</p>
+      <p>© 2026 Website Design & Development by Kavya.D.Rathod</p>
+    </div>
+  </footer>
+</body>
+</html>
