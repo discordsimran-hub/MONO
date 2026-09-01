@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Gifts By Mono</title>
+  <link rel="stylesheet" href="style.css?v=12">
+  <link href="https://fonts.cdnfonts.com/css/pierson" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo-link" aria-label="Go to homepage">
+      <img src="Mono.jpeg" alt="Mono Logo" class="nav-logo">
+    </a>
+    <div class="nav-container">
+      <h1 class="logo">MONO</h1>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cart.html" class="nav-cart-button">Cart <span class="cart-count-badge" id="nav-cart-count">0</span></a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+        <button class="mobile-close" aria-label="Close menu">✕</button>
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <div class="mobile-shop-menu shop-menu">
+          <button class="shop-toggle" aria-expanded="false">Shop ▾</button>
+          <div class="shop-submenu" aria-hidden="true">
+            <a href="shop.html">All Product's</a>
+            <a href="summer-collection.html">Summer Collection'26</a>
+            <a href="refills.html">Refills</a>
+            <a href="gifts.html">The Gifts By Mono</a>
+          </div>
+        </div>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="gifts-banner">
+        <img src="gift.jpeg" alt="Gifts Banner">
+      </div>
+      <h2>The Gifts By Mono</h2>
+      
+      <div class="gift-grid" id="gift-list">
+        <!-- Static fallback cards so the page shows even if JS fails -->
+        <div class="product-card gift-card">
+          <div class="product-image"><img src="maleset.jpeg" alt="Male Set"></div>
+          <h3>The Gentlemen's Set</h3>
+          <ul class="gift-items">
+            <li>250 ML</li>
+          </ul>
+          <div class="shop-price-row"><span class="shop-price">₹2300</span></div>
+          <div class="product-card-actions">
+            <a class="view-details-btn" href="product.html?gift=1">View details</a>
+          </div>
+        </div>
+
+        <div class="product-card gift-card">
+          <div class="product-image"><img src="femaleset.jpeg" alt="Female Set"></div>
+          <h3>The Lady's Collection</h3>
+          <ul class="gift-items">
+            <li>250 ML</li>
+          </ul>
+          <div class="shop-price-row"><span class="shop-price">₹2300</span></div>
+          <div class="product-card-actions">
+            <a class="view-details-btn" href="product.html?gift=2">View details</a>
+          </div>
+        </div>
+
+        <div class="product-card gift-card">
+          <div class="product-image"><img src="universal.jpeg" alt="Universal Set"></div>
+          <h3>Universal Set</h3>
+          <ul class="gift-items">
+            <li>250 ML</li>
+          </ul>
+          <div class="shop-price-row"><span class="shop-price">₹2500</span></div>
+          <div class="product-card-actions">
+            <a class="view-details-btn" href="product.html?gift=3">View details</a>
+          </div>
+        </div>
+
+        <div class="product-card gift-card">
+          <div class="product-image"><img src="set%204.jpeg" alt="Custom Set"></div>
+          <h3>Get Your's Own Custom Set</h3>
+          <ul class="gift-items">
+          </ul>
+          <div class="shop-price-row"><span class="shop-price"></span></div>
+          <div class="product-card-actions">
+            <a class="view-details-btn" href="product.html?gift=4">View details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p> All Rights Reserved.
+          Brand & Products belong to Mono Fine Fragrances.</p>
+      <p>© 2026 Website Design & Development by Kavya.D.Rathod</p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=14"></script>
+  <noscript>
+    <div style="padding:1rem;background:#fff4e6;border:1px solid #f0c7a3;border-radius:6px;margin:1rem 0;">JavaScript is required to view gift sets. Please enable JavaScript and refresh.</div>
+  </noscript>
+</body>
+</html>
