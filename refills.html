@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mono | Refill Request</title>
+  <link href="https://fonts.cdnfonts.com/css/pierson" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=12">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo-link" aria-label="Go to homepage">
+      <img src="Mono.jpeg" alt="Mono Logo" class="nav-logo">
+    </a>
+    <div class="nav-container">
+      <h1 class="logo">MONO</h1>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+        <button class="mobile-close" aria-label="Close menu">✕</button>
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <div class="mobile-shop-menu shop-menu">
+          <button class="shop-toggle" aria-expanded="false">Shop ▾</button>
+          <div class="shop-submenu" aria-hidden="true">
+            <a href="shop.html">All Product's</a>
+            <a href="summer-collection.html">Summer Collection'26</a>
+          </div>
+        </div>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section refill-page">
+    <div class="container">
+      <div class="refill-card">
+        <h1>Refill Request</h1>
+        <p class="refill-subtitle">Tell us which fragrance you want refilled and we'll contact you next.</p>
+
+        <form id="refill-step1-form">
+          <div class="refill-fragrance-select">
+            <label>Select a fragrance</label>
+            <div id="refill-custom-select" class="refill-custom-select" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+              <span id="refill-select-value">Select a fragrance</span>
+              <span class="select-arrow">▾</span>
+            </div>
+            <div id="refill-options-popup" class="refill-options-popup" aria-hidden="true"></div>
+            <input type="hidden" id="refill-fragrance" name="fragrance" value="" required>
+          </div>
+
+          <label>
+            Full name
+            <input id="refill-full-name" name="full_name" type="text" placeholder="Your full name" required>
+          </label>
+
+          <label>
+            Phone no.
+            <input id="refill-phone" name="phone" type="tel" placeholder="Your phone number" required>
+          </label>
+
+          <button class="submit-btn" type="submit">Next</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p> All Rights Reserved.
+          Brand & Products belong to Mono Fine Fragrances.</p>
+      <p>© 2026 Website Design & Development by Kavya.D.Rathod</p>
+    </div>
+  </footer>
+</body>
+</html>

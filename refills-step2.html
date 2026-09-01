@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mono | Refill Details</title>
+  <link href="https://fonts.cdnfonts.com/css/pierson" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=12">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo-link" aria-label="Go to homepage">
+      <img src="Mono.jpeg" alt="Mono Logo" class="nav-logo">
+    </a>
+    <div class="nav-container">
+      <h1 class="logo">MONO</h1>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html" class="nav-cart-button">Cart <span class="cart-count-badge" id="nav-cart-count">0</span></a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+        <button class="mobile-close" aria-label="Close menu">✕</button>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="summer-collection.html">Summer Collection'26</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section refill-page">
+    <div class="container">
+      <div class="refill-card">
+        <h1>Refill Details</h1>
+        <p class="refill-subtitle">Add your delivery details and send the refill request to us.</p>
+
+        <div id="refill-summary" class="refill-summary"></div>
+
+        <form id="refill-step2-form">
+          <label>
+            Address
+            <textarea id="refill-address" name="address" placeholder="Your delivery address" rows="4" required></textarea>
+          </label>
+
+          <label>
+            Email
+            <input id="refill-email" name="email" type="email" placeholder="Your email address" required>
+          </label>
+
+          <button class="submit-btn" type="submit">Submit</button>
+        </form>
+
+        <p class="refill-message"></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p> All Rights Reserved.
+          Brand & Products belong to Mono Fine Fragrances.</p>
+      <p>© 2026 Website Design & Development by Kavya.D.Rathod</p>
+    </div>
+  </footer>
+</body>
+</html>
