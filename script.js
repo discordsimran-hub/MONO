@@ -1052,6 +1052,83 @@ function updateProductPriceDisplay(productId, sizeValue) {
   }
 }
 
+function getGalleryImages(images, fallbackImage) {
+  const validImages = Array.isArray(images) ? images.filter(Boolean) : [];
+  return validImages.length ? validImages : [fallbackImage].filter(Boolean);
+}
+
+function setupProductGallery(galleryRoot) {
+  if (!galleryRoot) return;
+
+  const track = galleryRoot.querySelector('.product-detail-gallery-track');
+  const slides = Array.from(galleryRoot.querySelectorAll('.product-detail-slide'));
+  const dots = Array.from(galleryRoot.querySelectorAll('.gallery-dot'));
+  const prevButton = galleryRoot.querySelector('.gallery-arrow.prev');
+  const nextButton = galleryRoot.querySelector('.gallery-arrow.next');
+
+  if (!track || slides.length <= 1) {
+    return;
+  }
+
+  let currentIndex = 0;
+  let startTimer = null;
+  let slideTimer = null;
+
+  const updateGallery = (nextIndex) => {
+    currentIndex = (nextIndex + slides.length) % slides.length;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === currentIndex);
+    });
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+      dot.setAttribute('aria-selected', String(index === currentIndex));
+    });
+  };
+
+  const clearTimers = () => {
+    if (startTimer) {
+      clearTimeout(startTimer);
+      startTimer = null;
+    }
+    if (slideTimer) {
+      clearInterval(slideTimer);
+      slideTimer = null;
+    }
+  };
+
+  const restartAutoPlay = () => {
+    clearTimers();
+    startTimer = window.setTimeout(() => {
+      slideTimer = window.setInterval(() => {
+        updateGallery(currentIndex + 1);
+      }, 3000);
+    }, 10000);
+  };
+
+  prevButton?.addEventListener('click', () => {
+    updateGallery(currentIndex - 1);
+    restartAutoPlay();
+  });
+
+  nextButton?.addEventListener('click', () => {
+    updateGallery(currentIndex + 1);
+    restartAutoPlay();
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      updateGallery(index);
+      restartAutoPlay();
+    });
+  });
+
+  updateGallery(0);
+  restartAutoPlay();
+}
+
 function loadGiftSetDetail(giftSetId) {
   const detailContainer = document.getElementById('product-detail');
   const set = giftSets.find((item) => item.id === giftSetId);
@@ -1060,13 +1137,29 @@ function loadGiftSetDetail(giftSetId) {
   const setItems = set.items.map((id) => products.find((product) => product.id === id)).filter(Boolean);
   const total = set.price;
   const fallbackImage = setItems[0] && setItems[0].image ? setItems[0].image : 'gift.jpeg';
+  const galleryImages = getGalleryImages(set.images, set.image || fallbackImage);
 
     if (set.isCustom) {
     detailContainer.innerHTML = `
       <div class="product-detail-layout">
         <div class="product-detail-gallery">
           <div class="product-detail-image-frame">
-            <img src="${set.image || fallbackImage}" alt="${set.name}">
+            <div class="product-detail-gallery-track">
+              ${galleryImages.map((imageSrc, index) => `
+                <div class="product-detail-slide ${index === 0 ? 'active' : ''}">
+                  <img src="${imageSrc}" alt="${set.name} ${index + 1}">
+                </div>
+              `).join('')}
+            </div>
+            <div class="product-detail-gallery-controls">
+              <button type="button" class="gallery-arrow prev" aria-label="Previous image">←</button>
+              <div class="gallery-dots" aria-label="Image navigation">
+                ${galleryImages.map((_, index) => `
+                  <button type="button" class="gallery-dot ${index === 0 ? 'active' : ''}" data-gallery-index="${index}" aria-label="Go to image ${index + 1}" aria-selected="${index === 0}"></button>
+                `).join('')}
+              </div>
+              <button type="button" class="gallery-arrow next" aria-label="Next image">→</button>
+            </div>
           </div>
         </div>
         <div class="product-detail-panel">
@@ -1264,6 +1357,9 @@ function loadGiftSetDetail(giftSetId) {
         showCartToast(`Selected: ${selectedNames.join(', ')}`);
       });
     }
+
+    const galleryRoot = detailContainer.querySelector('.product-detail-gallery');
+    setupProductGallery(galleryRoot);
     return true;
   }
 
@@ -1271,7 +1367,22 @@ function loadGiftSetDetail(giftSetId) {
     <div class="product-detail-layout">
       <div class="product-detail-gallery">
         <div class="product-detail-image-frame">
-          <img src="${set.image || fallbackImage}" alt="${set.name}">
+          <div class="product-detail-gallery-track">
+            ${galleryImages.map((imageSrc, index) => `
+              <div class="product-detail-slide ${index === 0 ? 'active' : ''}">
+                <img src="${imageSrc}" alt="${set.name} ${index + 1}">
+              </div>
+            `).join('')}
+          </div>
+          <div class="product-detail-gallery-controls">
+            <button type="button" class="gallery-arrow prev" aria-label="Previous image">←</button>
+            <div class="gallery-dots" aria-label="Image navigation">
+              ${galleryImages.map((_, index) => `
+                <button type="button" class="gallery-dot ${index === 0 ? 'active' : ''}" data-gallery-index="${index}" aria-label="Go to image ${index + 1}" aria-selected="${index === 0}"></button>
+              `).join('')}
+            </div>
+            <button type="button" class="gallery-arrow next" aria-label="Next image">→</button>
+          </div>
         </div>
       </div>
       <div class="product-detail-panel">
@@ -1332,6 +1443,9 @@ function loadGiftSetDetail(giftSetId) {
     };
     createHearts(6);
   }
+
+  const galleryRoot = detailContainer.querySelector('.product-detail-gallery');
+  setupProductGallery(galleryRoot);
   return true;
 }
 
@@ -1369,12 +1483,28 @@ function loadProductDetail() {
   const detailSizeHtml = detailSizeCount === 1
     ? (has100 ? `<div class="fixed-size" style="color:#5c4634">Size: 100 ML - ₹${product.price100}</div>` : `<div class="fixed-size" style="color:#5c4634">Size: 50 ML - ₹${product.price50}</div>`)
     : `<select id="size-${product.id}" onchange="updateProductPriceDisplay(${product.id}, this.value)">${detailSizeOptions}</select>`;
+  const galleryImages = getGalleryImages(product.images, product.image);
 
   detailContainer.innerHTML = `
     <div class="product-detail-layout">
       <div class="product-detail-gallery">
         <div class="product-detail-image-frame">
-          <img src="${product.image}" alt="${product.name}">
+          <div class="product-detail-gallery-track">
+            ${galleryImages.map((imageSrc, index) => `
+              <div class="product-detail-slide ${index === 0 ? 'active' : ''}">
+                <img src="${imageSrc}" alt="${product.name} ${index + 1}">
+              </div>
+            `).join('')}
+          </div>
+          <div class="product-detail-gallery-controls">
+            <button type="button" class="gallery-arrow prev" aria-label="Previous image">←</button>
+            <div class="gallery-dots" aria-label="Image navigation">
+              ${galleryImages.map((_, index) => `
+                <button type="button" class="gallery-dot ${index === 0 ? 'active' : ''}" data-gallery-index="${index}" aria-label="Go to image ${index + 1}" aria-selected="${index === 0}"></button>
+              `).join('')}
+            </div>
+            <button type="button" class="gallery-arrow next" aria-label="Next image">→</button>
+          </div>
         </div>
       </div>
       <div class="product-detail-panel">
@@ -1457,6 +1587,8 @@ function loadProductDetail() {
     </div>
   `;
 
+  const galleryRoot = detailContainer.querySelector('.product-detail-gallery');
+  setupProductGallery(galleryRoot);
 }
 
 async function submitReview(productId) {
