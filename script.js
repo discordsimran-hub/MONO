@@ -602,9 +602,11 @@ function initLogoIntro() {
   };
 
   video.muted = true;
+  video.defaultPlaybackRate = 1.5;
+  video.playbackRate = 2.0;
   video.play().catch(() => {});
   video.addEventListener('ended', hideIntro, { once: true });
-  window.setTimeout(hideIntro, 8000);
+  window.setTimeout(hideIntro, 5000);
 }
 
 async function initApp() {
