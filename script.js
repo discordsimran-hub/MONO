@@ -107,7 +107,7 @@ const products = [
     ratingTotal: 0,
     userRating: 0,
     image: 'Mono 7.PNG',
-    images: ['Mono 7.PNG', 'mono7.PNG'],
+    images: ['Mono 7.PNG', 'mon7.PNG'],
     category: 'Timeless Blend',
     scent: 'Soft amber florals',
     volume: '100 ml',
