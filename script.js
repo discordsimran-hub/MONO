@@ -41,6 +41,7 @@ const products = [
     ratingTotal: 0,
     userRating: 0,
     image: 'Mono Cherry.jpeg',
+    images: ['Mono Cherry.jpeg', 'cherry blossom.PNG'],
     category: 'Floral',
     scent: 'Cherry Blossom Petals',
     volume: '100 ml',
@@ -73,6 +74,7 @@ const products = [
     ratingTotal: 0,
     userRating: 0,
     image: 'Mono Blue.JPG',
+    images: ['Mono Blue.JPG', 'blue.PNG'],
     category: 'Fresh Woody',
     scent: 'Blue Woods & Rain',
     volume: '100 ml',
@@ -105,6 +107,7 @@ const products = [
     ratingTotal: 0,
     userRating: 0,
     image: 'Mono 7.PNG',
+    images: ['Mono 7.PNG', 'mono7.PNG'],
     category: 'Timeless Blend',
     scent: 'Soft amber florals',
     volume: '100 ml',
@@ -137,6 +140,7 @@ const products = [
     ratingTotal: 0,
     userRating: 0,
     image: 'Mono Floral.PNG',
+    images: ['Mono Floral.PNG', 'flora.PNG'],
     category: 'Floral',
     scent: 'Blooming florals',
     volume: '100 ml',
@@ -169,6 +173,7 @@ const products = [
     ratingTotal: 0,
     userRating: 0,
     image: 'Mono Malone.PNG',
+    images: ['Mono Malone.PNG', 'malone.PNG'],
     category: 'Warm Woody',
     scent: 'Rich woods & velvet warmth',
     volume: '100 ml',
@@ -201,6 +206,7 @@ const products = [
     ratingTotal: 0,
     userRating: 0,
     image: 'Mono Noire.PNG',
+    images: ['Mono Noire.PNG', 'noire.PNG'],
     category: 'Bold Woody',
     scent: 'Dark florals & depth',
     volume: '100 ml',
@@ -234,6 +240,7 @@ const products = [
     ratingTotal: 0,
     userRating: 0,
     image: 'Mono Paradise.jpeg',
+    images: ['Mono Paradise.jpeg', 'paradise.PNG'],
     category: 'Floral',
     scent: 'Tropical florals & citrus',
     volume: '100 ml',
@@ -263,6 +270,7 @@ const products = [
     ratingTotal: 0,
     userRating: 0,
     image: 'Mono AfterGlow.jpeg',
+    images: ['Mono AfterGlow.jpeg', 'afterglow.PNG'],
     category: 'Warm Amber',
     scent: 'Amber & soft woods',
     volume: '50 ml',
@@ -293,6 +301,7 @@ const products = [
     ratingTotal: 0,
     userRating: 0,
     image: 'Mono Je T\'aime.jpeg',
+    images: ['Mono Je T\'aime.jpeg', 'je taime.PNG'],
     category: 'Floral',
     scent: 'Tender roses & soft musk',
     volume: '100 ml',
@@ -1144,12 +1153,14 @@ function loadGiftSetDetail(giftSetId) {
       <div class="product-detail-layout">
         <div class="product-detail-gallery">
           <div class="product-detail-image-frame">
-            <div class="product-detail-gallery-track">
-              ${galleryImages.map((imageSrc, index) => `
-                <div class="product-detail-slide ${index === 0 ? 'active' : ''}">
-                  <img src="${imageSrc}" alt="${set.name} ${index + 1}">
-                </div>
-              `).join('')}
+            <div class="product-detail-gallery-viewport">
+              <div class="product-detail-gallery-track">
+                ${galleryImages.map((imageSrc, index) => `
+                  <div class="product-detail-slide ${index === 0 ? 'active' : ''}">
+                    <img src="${imageSrc}" alt="${set.name} ${index + 1}">
+                  </div>
+                `).join('')}
+              </div>
             </div>
             <div class="product-detail-gallery-controls">
               <button type="button" class="gallery-arrow prev" aria-label="Previous image">←</button>
@@ -1367,12 +1378,14 @@ function loadGiftSetDetail(giftSetId) {
     <div class="product-detail-layout">
       <div class="product-detail-gallery">
         <div class="product-detail-image-frame">
-          <div class="product-detail-gallery-track">
-            ${galleryImages.map((imageSrc, index) => `
-              <div class="product-detail-slide ${index === 0 ? 'active' : ''}">
-                <img src="${imageSrc}" alt="${set.name} ${index + 1}">
-              </div>
-            `).join('')}
+          <div class="product-detail-gallery-viewport">
+            <div class="product-detail-gallery-track">
+              ${galleryImages.map((imageSrc, index) => `
+                <div class="product-detail-slide ${index === 0 ? 'active' : ''}">
+                  <img src="${imageSrc}" alt="${set.name} ${index + 1}">
+                </div>
+              `).join('')}
+            </div>
           </div>
           <div class="product-detail-gallery-controls">
             <button type="button" class="gallery-arrow prev" aria-label="Previous image">←</button>
@@ -1489,12 +1502,14 @@ function loadProductDetail() {
     <div class="product-detail-layout">
       <div class="product-detail-gallery">
         <div class="product-detail-image-frame">
-          <div class="product-detail-gallery-track">
-            ${galleryImages.map((imageSrc, index) => `
-              <div class="product-detail-slide ${index === 0 ? 'active' : ''}">
-                <img src="${imageSrc}" alt="${product.name} ${index + 1}">
-              </div>
-            `).join('')}
+          <div class="product-detail-gallery-viewport">
+            <div class="product-detail-gallery-track">
+              ${galleryImages.map((imageSrc, index) => `
+                <div class="product-detail-slide ${index === 0 ? 'active' : ''}">
+                  <img src="${imageSrc}" alt="${product.name} ${index + 1}">
+                </div>
+              `).join('')}
+            </div>
           </div>
           <div class="product-detail-gallery-controls">
             <button type="button" class="gallery-arrow prev" aria-label="Previous image">←</button>
